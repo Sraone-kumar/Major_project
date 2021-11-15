@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr><th>date/time</th>
+            <th>one</th>
+            <th>two</th>
+            <th>three</th>
+            <th>four</th>
+            <th>five</th>
+            <th>six</th>
+        </tr>            
+        </thead>
+        <tbody>
+            <tr>
+                <th>monday</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>tuesday</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>wednesday</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Thursday</th>
+                <td ></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Friday</th>
+                <td ></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>saturday</th>
+                <td ></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        isMouseDown = false;
+        $('.table tbody').find('td').mousedown(function(e){
+            var cell = $(this);
+            isMouseDown=true;
+            $('.table').find(".selected").removeClass('selected');
+
+            cell.addClass('selected');
+            // $(this).nextAll().slice(0,2).addClass('selected')
+            cell.attr('colspan',3)
+            cell.nextAll().slice(0,2).remove()
+
+            return false;
+        }).mouseover(function(){
+            if(!isMouseDown) return;
+            $(this).addClass('selected')
+            console.log("down")
+        });
+
+        $(document).mouseup(function(){
+            isMouseDown = false;
+            console.log('stop');
+        })
+    </script>
+</body>
+</html>
